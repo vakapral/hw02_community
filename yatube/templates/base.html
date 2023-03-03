@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
-  <head>    
+  <head>
     {% include 'includes/head.html' %}
     {% block title %}
       Заголовок не подвезли :(
@@ -9,9 +9,9 @@
   </head>
   <body>
     <header>
-      {% include 'includes/header.html' %} 
+      {% include 'includes/header.html' %}
     </header>
-    <main> 
+    <main>
       {% block content %}
        Содержимое не подвезли :(
       {% endblock %}
