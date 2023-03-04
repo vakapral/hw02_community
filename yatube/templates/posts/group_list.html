@@ -4,8 +4,8 @@
 {% endblock %}
 {% block content %}
 <div class="container py-5">
-  <h1>{{ group }}</h1>
-  <p>{{ description }}</p>
+  <h1>Записи сообщества  {{ group }}</h1>
+  <p>{{ group.description }}</p>
   {% for post in posts %}
   <article>
     <ul>

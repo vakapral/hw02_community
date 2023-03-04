@@ -1,11 +1,11 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
+{% block title %}
+  <title>Заголовок не подвезли :(</title>
+{% endblock %}
   <head>
     {% include 'includes/head.html' %}
-    {% block title %}
-      Заголовок не подвезли :(
-    {% endblock %}
   </head>
   <body>
     <header>
