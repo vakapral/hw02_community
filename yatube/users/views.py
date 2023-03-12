@@ -7,10 +7,14 @@ from django.urls import reverse_lazy
 
 # Импортируем класс формы, чтобы сослаться на неё во view-классе
 from .forms import CreationForm
-
+from django.contrib.auth.forms import PasswordResetForm
 
 class SignUp(CreateView):
     form_class = CreationForm
-    # После успешной регистрации перенаправляем пользователя на главную.
     success_url = reverse_lazy('posts:index')
     template_name = 'users/signup.html'
+
+class PasswordResetView(CreateView):
+    form_class = PasswordResetForm
+    success_url = reverse_lazy('posts:index')
+    template_name = 'users/password_reset.html'
