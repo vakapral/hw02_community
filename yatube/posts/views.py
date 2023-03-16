@@ -64,6 +64,12 @@ def post_detail(request, post_id):
     return render(request, 'posts/post_detail.html', context)
 
 
+def post_create(request):
+    # context = {
+    #     'form': postForm,
+    #     'post_count': post_count,
+    # }
+    return render(request, 'posts/create_post.html')
 
 
 
