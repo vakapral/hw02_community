@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 
 # Импортируем класс формы, чтобы сослаться на неё во view-классе
 from .forms import CreationForm
-from django.contrib.auth.forms import PasswordResetForm
+# from django.contrib.auth.forms import PasswordResetForm
 
 class SignUp(CreateView):
     form_class = CreationForm
