@@ -1,12 +1,15 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Post, Group, User
+from .forms import PostForm
 # from .models import Group
 # from .models import User
 # import datetime
 from django.core.paginator import Paginator
+from django.shortcuts import redirect
 
 
-POSTS_ON_PAGE = 10
+POSTS_ON_PAGE: int = 10
 
 
 def index(request):
@@ -64,13 +67,32 @@ def post_detail(request, post_id):
     return render(request, 'posts/post_detail.html', context)
 
 
+@login_required
 def post_create(request):
+    is_edit = False
+    form = PostForm(request.POST or None)
+
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.author = request.user
+        post.save()
+
+        return redirect('posts:profile', post.author.username)
+
+    context = {
+        'form': form,
+        'is_edit': is_edit,
+    }
+    return render(request, 'posts/create_post.html', context)
+
+
+@login_required
+def post_edit(request, post_id):
     # context = {
     #     'form': postForm,
     #     'post_count': post_count,
     # }
     return render(request, 'posts/create_post.html')
-
 
 
 # def index(request):
